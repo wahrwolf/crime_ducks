@@ -13,7 +13,7 @@ def play_game():
     gamestate = build_game_world()
     
     # Play the game
-    while True:
+    while not gamestate.is_game_finished():
         # Get user input
         user_prompt = get_user_input(gamestate)
 
@@ -26,6 +26,7 @@ def play_game():
         
         # Update gamestate based on OpenAI response
         gamestate = update_gamestate(gamestate, response)
+    print("You busted the crime. You won!")
 
 
 if __name__ == "__main__":
