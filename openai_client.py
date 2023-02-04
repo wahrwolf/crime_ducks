@@ -17,5 +17,3 @@ def get_response(prompt, tokens=None):
         temperature=config["openai"].get("temperature", 0.7)
     ).choices[0].text
     return response
-
-print(get_response("This is a test, if I can speak to the API. Please tell me a cute animal joke"))
