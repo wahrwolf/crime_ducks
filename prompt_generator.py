@@ -29,6 +29,20 @@ USER: {user_prompt}
 GAME MASTER RESPONSE: 
 """
 
+TEMPLATE_PLOT_INFO = """
+You are the game master of a text-based role playing game.
+Please formulate a short text that introduces the player to the plot but does not contain hints about who the murderer is.
+
+The plot of the game is this:
+{plot}
+
+The characters are:
+{characters}
+
+INTRODUCTION TO THE PLOT:
+"""
+
+
 def generate_prompt(gamestate, user_prompt):
     # code to generate prompt based on gamestate
     plot = gamestate._plot
@@ -39,4 +53,10 @@ def generate_prompt(gamestate, user_prompt):
 
     # print(prompt)
 
+    return prompt
+
+def generate_plot_user_info_prompt(gamestate):
+    plot = gamestate._plot
+    characters = "\n".join(f"{c['name']}: {c['description']}" for c in gamestate._characters)
+    prompt = TEMPLATE_PLOT_INFO.format(plot=plot, characters=characters)
     return prompt
