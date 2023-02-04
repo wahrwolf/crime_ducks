@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 openai = "*"
 toml = "*"
+jinja2 = "*"
 
 [dev-packages]
 
