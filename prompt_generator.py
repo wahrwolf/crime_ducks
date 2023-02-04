@@ -31,6 +31,8 @@ GAME MASTER RESPONSE:
 
 TEMPLATE_PLOT_INFO = """
 You are the game master of a text-based role playing game.
+The game is about solving a crime by deducing the murderer based on the responses of the involved characters to the user's questions.
+
 Please formulate a short text that introduces the player to the plot but does not contain hints about who the murderer is.
 
 The plot of the game is this:
