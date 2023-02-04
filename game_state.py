@@ -22,8 +22,8 @@ class GameState():
             "history": self._history,
         })
 
-    def add_history_entry(self, value: str):
-        self._history.append(value)
+    def add_history_entry(self, prompt: str, answer: str):
+        self._history.append(f"USER: {prompt}\nGAME MASTER: {answer}")
 
     def solve_crime(self):
         self._crime_is_solved = True

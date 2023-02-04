@@ -3,15 +3,15 @@ from prompt_generator import generate_prompt
 from user_questioner import get_user_input
 from openai_client import get_response
 
-def update_gamestate(gamestate, response):
-    gamestate.add_history_entry(response)
+def update_gamestate(gamestate, user_prompt, response):
+    gamestate.add_history_entry(user_prompt, response)
     return gamestate
 
 
 def play_game():
     # Initialize game world
     gamestate = build_game_world()
-    
+
     # Play the game
     while not gamestate.is_game_finished():
         # Get user input
@@ -25,7 +25,8 @@ def play_game():
         print(f"A> {response}")
         
         # Update gamestate based on OpenAI response
-        gamestate = update_gamestate(gamestate, response)
+        gamestate = update_gamestate(gamestate, user_prompt, response)
+
     print("You busted the crime. You won!")
 
 
