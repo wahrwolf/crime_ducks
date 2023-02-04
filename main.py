@@ -1,11 +1,13 @@
 def update_gamestate(gamestate, input):
-    # code to update gamestate based on input
-    # For example, if input is "move north", update the location in gamestate
-    if input == "move north":
+    response = openai_client.send_prompt(input)
+    # code to update gamestate based on response
+    # For example, if response is "You are now in the North Room", update the location in gamestate
+    if "You are now in the North Room" in response:
         gamestate["location"] = "North Room"
-    # Add more logic here based on the game design
+    # Add more logic here based on the game design and OpenAI response
     ...
     return gamestate
+
 
 def play_game():
     # Initialize game world
