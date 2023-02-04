@@ -32,4 +32,6 @@ def play_game():
 
 if __name__ == "__main__":
     print("Chatbot Crime Busters 🦆")
+    print("------------------------")
+
     play_game()
