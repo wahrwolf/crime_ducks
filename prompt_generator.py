@@ -11,3 +11,8 @@ def generate_plot_user_info_prompt(gamestate):
     template = jinja_env.get_template(config["prompts"]["plot_template_path"])
     prompt = template.render(gamestate.as_dict())
     return prompt
+
+def generate_case_solved_query_prompt(gamestate):
+    template = jinja_env.get_template(config["prompts"]["case_closed_template_path"])
+    prompt = template.render(gamestate.as_dict())
+    return prompt

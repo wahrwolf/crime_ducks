@@ -1,8 +1,7 @@
 import signal
 import sys
 from game_world_builder import build_game_world
-from prompt_generator import generate_prompt
-from prompt_generator import generate_plot_user_info_prompt
+from prompt_generator import generate_prompt, generate_plot_user_info_prompt, generate_case_solved_query_prompt
 from user_questioner import get_user_input
 from openai_client import get_response
 
@@ -40,6 +39,11 @@ def play_game():
         # Update gamestate based on OpenAI response
         gamestate = update_gamestate(gamestate, user_prompt, response)
         gamestate.store()
+
+        case_closed_prompt = generate_case_solved_query_prompt(gamestate)
+        case_closed_response = get_response(case_closed_prompt).strip()
+        if case_closed_response.strip().lower() == "yes":
+            gamestate.solve_crime()
 
     print("You busted the crime. You won!")
 

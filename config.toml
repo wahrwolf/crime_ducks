@@ -11,3 +11,4 @@ template_path = 'templates/game_world_builder.jinja2'
 [prompts]
 user_template_path = 'templates/user_prompt.jinja2'
 plot_template_path = 'templates/plot_info.jinja2'
+case_closed_template_path = 'templates/case_solved_query.jinja2'
