@@ -39,6 +39,7 @@ def play_game():
         
         # Update gamestate based on OpenAI response
         gamestate = update_gamestate(gamestate, user_prompt, response)
+        gamestate.store()
 
     print("You busted the crime. You won!")
 

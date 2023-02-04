@@ -7,3 +7,7 @@ max_tokens = 2048
 [gameworld]
 seed = 1337
 template_path = 'game_world_builder.jinja2'
+
+[prompts]
+user_template_path = 'user_prompt.jinja2'
+plot_template_path = 'plot_info.jinja2'

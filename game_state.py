@@ -1,9 +1,8 @@
 import random
-
+import toml
 from global_config import config, jinja_env
 
 template = jinja_env.get_template(config["gameworld"]["template_path"])
-
 
 class GameState():
     def __init__(self, locations: list, characters: list, plot: str):
@@ -13,6 +12,19 @@ class GameState():
         self._victim = random.choice(characters)
         self._history = []
         self._crime_is_solved = False
+
+    def as_dict(self):
+        return {
+                "plot": self._plot,
+                "characters": self._characters,
+                "victim": self._victim,
+                "locations": self._locations,
+                "history": self._history,
+        }
+
+    def store(self):
+        with open('.gamestate.toml', 'w') as f:
+            toml.dump(self.as_dict(), f)
 
     def render_template(self) -> str:
         return template.render(**{
