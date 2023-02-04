@@ -26,7 +26,7 @@ class GameState():
         self._history.append(value)
 
     def solve_crime(self):
-        this._crime_is_solved = True
+        self._crime_is_solved = True
 
     def is_game_finished(self):
-        return self.is_game_finished
+        return self._crime_is_solved
