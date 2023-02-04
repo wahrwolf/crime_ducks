@@ -1,0 +1,10 @@
+{% extends "./01--basic-information.jinja2" %}
+
+PLOT: {{ plot }}
+
+{% if history %}
+HERE IS THE CONVERSATION UNTIL NOW:
+{% for event in history %}
+{{ event }}
+{% endfor %}
+{% endif %}
