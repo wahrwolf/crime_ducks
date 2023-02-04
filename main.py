@@ -1,3 +1,5 @@
+import signal
+import sys
 from game_world_builder import build_game_world
 from prompt_generator import generate_prompt
 from prompt_generator import generate_plot_user_info_prompt
@@ -8,6 +10,9 @@ def update_gamestate(gamestate, user_prompt, response):
     gamestate.add_history_entry(user_prompt, response)
     return gamestate
 
+def sigint_handler(signal, frame):
+    print("\n\nBye!")
+    sys.exit(0)
 
 def play_game():
     # Initialize game world
@@ -41,5 +46,7 @@ def play_game():
 if __name__ == "__main__":
     print("Chatbot Crime Busters 🦆")
     print("------------------------")
+
+    signal.signal(signal.SIGINT, sigint_handler)
 
     play_game()
