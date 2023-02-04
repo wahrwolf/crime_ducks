@@ -1,0 +1,23 @@
+Hey, I would like to play a text based RPG and I would ask you to be the game master.
+
+I would like to play a crimi game.
+
+The game will be played in the following locations:
+{% for location in locations %}
+- {{ location.name }}: {{ location.description }}
+{% endfor %}
+
+There is one player.
+There are four other characters, with one killer and one victim. The characters are:
+{% for character in characters %}
+- {{ character.name }} ({{ character.description }})
+{% endfor %}
+
+Murder victim: {{ victim.name }}
+
+Murderer: not the victim and not the player and not the game master. You have to choose the killer.
+
+
+Could you please write a plot for the given environment? This includes the motivation of the killer and how he did it. Please provide some background information what the characters were doing around and during the time of the murder.
+
+The goal of the game is for the player to find the killer. If the killer is found, the game ends.
