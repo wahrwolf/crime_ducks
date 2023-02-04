@@ -1,5 +1,5 @@
-def update_gamestate(gamestate, input):
-    response = openai_client.send_prompt(input)
+def update_gamestate(gamestate, prompt):
+    response = openai_client.send_prompt(prompt)
     # code to update gamestate based on response
     # For example, if response is "You are now in the North Room", update the location in gamestate
     if "You are now in the North Room" in response:
