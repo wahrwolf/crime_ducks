@@ -10,13 +10,13 @@ def update_gamestate(gamestate, user_prompt, response):
     return gamestate
 
 def sigint_handler(signal, frame):
-    print("\n\nBye!")
+    print(f"\n\nYou gave up. Bye!")
     sys.exit(0)
 
 def play_game():
     # Initialize game world
     gamestate = build_game_world()
-    
+
     plot_info_prompt = generate_plot_user_info_prompt(gamestate)
 
     plot_info_response = get_response(plot_info_prompt)
@@ -45,8 +45,7 @@ def play_game():
         if case_closed_response.strip().lower() == "yes":
             gamestate.solve_crime()
 
-    print("You busted the crime. You won!")
-
+    print(f"You busted the crime after {gamestate._counter} Questions. You won!")
 
 if __name__ == "__main__":
     print("Chatbot Crime Busters 🦆")

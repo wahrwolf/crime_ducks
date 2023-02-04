@@ -12,6 +12,7 @@ class GameState():
         self._victim = random.choice(characters)
         self._history = []
         self._crime_is_solved = False
+        self._counter = 0
 
     def as_dict(self):
         return {
@@ -36,6 +37,7 @@ class GameState():
 
     def add_history_entry(self, prompt: str, answer: str):
         self._history.append(f"USER: {prompt}\nGAME MASTER: {answer}")
+        self._counter += 1
 
     def solve_crime(self):
         self._crime_is_solved = True

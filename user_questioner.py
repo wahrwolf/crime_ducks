@@ -1,7 +1,4 @@
-# User questioner
-
 from game_state import GameState
-
 
 def get_user_input(gamestate: GameState):
     print()
