@@ -2,7 +2,8 @@ import openai
 import toml
 
 config = toml.load("config.toml")
-openai.api_key = config["openai"]["api_key"]
+with open(config["openai"]["secret_file"]) as f:
+    openai.api_key = f.read()
 
 # OpenAI client
 def get_response(prompt):
