@@ -1,13 +1,17 @@
 import openai
+import toml
+
+config = toml.load("config.toml")
+openai.api_key = config["openai"]["api_key"]
 
 # OpenAI client
-def openai_response(prompt):
+def get_response(prompt):
     response = openai.Completion.create(
-        engine="text-davinci-002",
+        engine=config["openai"]["model"],
         prompt=prompt,
-        max_tokens=1024,
+        max_tokens=config["openai"].get("max_tokens", 2048),
         n=1,
         stop=None,
-        temperature=0.5,
+        temperature=config["openai"].get("temperature", 0.7)
     ).choices[0].text
     return response
