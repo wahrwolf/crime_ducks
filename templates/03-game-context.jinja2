@@ -1,5 +1,6 @@
-{% extends "./01--basic-information.jinja2" %}
+{% extends "templates/01-basic-information.jinja2" %}
 
+{% block content1 %}
 PLOT: {{ plot }}
 
 {% if history %}
@@ -8,3 +9,7 @@ HERE IS THE CONVERSATION UNTIL NOW:
 {{ event }}
 {% endfor %}
 {% endif %}
+
+{% block content3 %}
+{% endblock %}
+{% endblock %}

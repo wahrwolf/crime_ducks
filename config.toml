@@ -6,7 +6,7 @@ max_tokens = 2048
 
 [gameworld]
 seed = 1337
-template_path = 'templates/game_world_builder.jinja2'
+template_path = 'templates/02-generate-plot.jinja2'
 plot =  """
 It's a typical day in the library, with each character carrying out their own business. Sherlock Holmes is investigating a case, Jean-Luc Picard is reading a book, Taylor Swift is writing music, and Nancy Pearl is busy with library work.
 
@@ -77,6 +77,6 @@ name =  "St. Michael's Church"
 description =  "St. Michael's Church is one of Hamburg's five Lutheran main churches and one of the most famous churches in the city. St. Michaelis is a landmark of the city and it is considered to be one of the finest Hanseatic Protestant baroque churches."
 
 [prompts]
-user_template_path = 'templates/user_prompt.jinja2'
-plot_template_path = 'templates/plot_info.jinja2'
-case_closed_template_path = 'templates/case_solved_query.jinja2'
+user_template_path = 'templates/05-user-input.jinja2'
+plot_template_path = 'templates/04-introduction.jinja2'
+case_closed_template_path = 'templates/06-case_solved_query.jinja2'
