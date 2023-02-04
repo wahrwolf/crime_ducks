@@ -1,5 +1,5 @@
 from game_world_builder import build_game_world
-from promt_generator import generate_prompt
+from prompt_generator import generate_prompt
 from user_questioner import get_user_input
 from openai_client import get_response
 
