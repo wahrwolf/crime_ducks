@@ -18,6 +18,16 @@ def get_user_input(prompt):
     user_input = input(prompt)
     return user_input
 
+def update_gamestate(gamestate, input):
+    # code to update gamestate based on input
+    # For example, if input is "move north", update the location in gamestate
+    if input == "move north":
+        gamestate["location"] = "North Room"
+    # Add more logic here based on the game design
+    ...
+    return gamestate
+
+
 # OpenAI client
 def openai_response(prompt):
     response = openai.Completion.create(
