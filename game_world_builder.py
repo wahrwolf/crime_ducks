@@ -1,34 +1,9 @@
 import random
-import toml
-from jinja2 import Environment, FileSystemLoader
 
-config = toml.load("config.toml")
+from game_state import GameState
+from global_config import config
 
 random.seed(config["gameworld"]["seed"])
-
-env = Environment(loader=FileSystemLoader(''))
-template = env.get_template(config["gameworld"]["template_path"])
-
-
-class GameState():
-    def __init__(self, locations: list, characters: list, plot: str):
-        self._characters = characters
-        self._locations = locations
-        self._plot = plot
-        self._victim = random.choice(characters)
-        self._history = []
-
-    def render_template(self) -> str:
-        print(self._locations)
-        return template.render(**{
-            "locations": self._locations,
-            "characters": self._characters,
-            "victim": self._victim,
-            "history": self._history,
-        })
-
-    def add_history_entry(self, value: str):
-        self._history.append(value)
 
 
 class GameWorldBuilder():
@@ -81,8 +56,6 @@ class GameWorldBuilder():
     @classmethod
     def get_plot(cls) -> str:
         return """
-        Sure, here's a plot for the text-based RPG in the Library:
-
         It's a typical day in the library, with each character carrying out their own business. Sherlock Holmes is investigating a case, Jean-Luc Picard is reading a book, Taylor Swift is writing music, and Nancy Pearl is busy with library work.
 
         Suddenly, Taylor Swift is found dead in one of the aisles of the library. The players must find out who the killer is and what their motives were.

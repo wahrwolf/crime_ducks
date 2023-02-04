@@ -1,6 +1,9 @@
 # User questioner
-def get_user_input(user_ouput):
-    print("----")
-    print(user_output)
-    user_input = input("-> ")
+
+from game_state import GameState
+
+
+def get_user_input(gamestate: GameState):
+    print()
+    user_input = input("Q> ")
     return user_input

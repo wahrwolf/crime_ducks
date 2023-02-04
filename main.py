@@ -1,16 +1,10 @@
 from game_world_builder import build_game_world
 from promt_generator import generate_prompt
 from user_questioner import get_user_input
-from openai_client import openai_response
+from openai_client import get_response
 
-def update_gamestate(gamestate, prompt):
-    response = openai_client.send_prompt(prompt)
-    # code to update gamestate based on response
-    # For example, if response is "You are now in the North Room", update the location in gamestate
-    if "You are now in the North Room" in response:
-        gamestate["location"] = "North Room"
-    # Add more logic here based on the game design and OpenAI response
-    ...
+def update_gamestate(gamestate, response):
+    gamestate.add_history_entry(response)
     return gamestate
 
 
@@ -20,22 +14,20 @@ def play_game():
     
     # Play the game
     while True:
-        # Generate prompt
-        prompt = generate_prompt(gamestate)
-        
         # Get user input
-        user_input = get_user_input(prompt)
-        
-        # Update gamestate based on user input
-        gamestate = update_gamestate(gamestate, user_input)
+        user_prompt = get_user_input(gamestate)
+
+        prompt = generate_prompt(gamestate, user_prompt)
         
         # Get response from OpenAI
-        response = openai_response(prompt)
+        response = get_response(prompt)
+
+        print(f"A> {response}")
         
         # Update gamestate based on OpenAI response
         gamestate = update_gamestate(gamestate, response)
 
-# Start the game
+
 if __name__ == "__main__":
     print("Chatbot Crime Busters 🦆")
     play_game()
