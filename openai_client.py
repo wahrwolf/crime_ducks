@@ -1,7 +1,6 @@
 import openai
-import toml
+from global_config import config
 
-config = toml.load("config.toml")
 with open(config["openai"]["secret_file"]) as f:
     openai.api_key = f.read().splitlines()[0]
 
