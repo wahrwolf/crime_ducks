@@ -4,10 +4,10 @@ from jinja2 import Environment, FileSystemLoader
 
 config = toml.load("config.toml")
 
-random.seed(config["gameworld"]["seed"]
+random.seed(config["gameworld"]["seed"])
 
 env = Environment(loader=FileSystemLoader(''))
-template = env.get_template(config["gameworld"]["template_path"]
+template = env.get_template(config["gameworld"]["template_path"])
 
 
 class GameState():
