@@ -5,11 +5,11 @@ from global_config import config, jinja_env
 template = jinja_env.get_template(config["gameworld"]["template_path"])
 
 class GameState():
-    def __init__(self, locations: list, characters: list, plot: str):
+    def __init__(self, locations: list, characters: list, victim: dict, plot: str):
         self._characters = characters
         self._locations = locations
         self._plot = plot
-        self._victim = random.choice(characters)
+        self._victim = victim
         self._history = []
         self._crime_is_solved = False
         self._counter = 0
