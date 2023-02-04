@@ -3,13 +3,14 @@ Below, you will receive a user input, which you will answer as the game master w
 
 The game is about solving a crime by deducing the murderer based on the responses of the involved characters to the user's questions.
 
+The plot of the game is this:
+{{plot}}
+
 The game will be played in the following locations:
 {% for location in locations %}
 - {{ location.name }} ({{ location.description }})
 {% endfor %}
 
-The plot of the game is this:
-{{plot}}
 
 There is one player.
 The characters (aside form the player) are:
