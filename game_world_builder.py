@@ -1,12 +1,13 @@
-
-
 import random
+import toml
 from jinja2 import Environment, FileSystemLoader
 
-random.seed(1337)
+config = toml.load("config.toml")
+
+random.seed(config["gameworld"]["seed"]
 
 env = Environment(loader=FileSystemLoader(''))
-template = env.get_template('game_world_builder.jinja2')
+template = env.get_template(config["gameworld"]["template_path"]
 
 
 class GameState():
