@@ -63,6 +63,8 @@ class GameServer:
         player_action = self.player.read_line()
         while self.commands_enabled and player_action.startswith("!"):
             self.handle_command(player_action[1::])
+            if self.gamestate.is_game_finished():
+                return
             player_action = self.player.read_line()
 
         while not self.moderation_disabled and will_be_flagged_by_moderation(player_action):
@@ -76,6 +78,8 @@ class GameServer:
         self.played_turns += 1
 
     def check_if_game_is_finished(self):
+        if self.gamestate.is_game_finished():
+            return
         case_closed_prompt = generate_case_solved_query_prompt(self.gamestate)
         case_closed_response = get_response(case_closed_prompt).strip()
         if case_closed_response.strip().lower() == "yes":
