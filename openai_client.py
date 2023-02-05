@@ -19,3 +19,8 @@ def get_response(prompt, tokens=None):
     with open(".log.txt", "a") as f:
         f.writelines([response])
     return response
+
+def will_be_flagged_by_moderation(text: str):
+    response = openai.Moderation.create(input=text)
+
+    return response["results"][0]["flagged"]

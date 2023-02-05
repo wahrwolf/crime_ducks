@@ -2,11 +2,12 @@ from game_client import GameClient
 from game_world_builder import build_game_world
 from prompt_generator import generate_prompt, generate_plot_user_info_prompt, generate_case_solved_query_prompt
 from user_questioner import get_user_input
-from openai_client import get_response
+from openai_client import get_response, will_be_flagged_by_moderation
 
 class GameServer:
-    def __init__(self):
+    def __init__(self, disable_moderation=False):
         self.played_turns = 0
+        self.moderation_disabled = disable_moderation
 
     def start_game(self):
         self.played_turns = 0
@@ -32,7 +33,12 @@ class GameServer:
 
 
     def play_turn(self):
-        self.last_player_response = self.player.read_line()
+        player_action = self.player.read_line()
+        while not self.moderation_disabled and will_be_flagged_by_moderation(player_action):
+            self.player.print_message("!!! Your response does not comply with the moderation guideline !!!")
+            player_action = self.player.read_line()
+        self.last_player_response = player_action
+
         self.tell_ai_about_player_decision()
         self.update_gamestate()
         self.player.show_response(self.last_ai_response)

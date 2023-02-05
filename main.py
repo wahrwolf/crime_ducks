@@ -6,7 +6,6 @@ from game_client import GameClient
 
 
 def sigint_handler(signal, frame):
-    warning("You gave up. Bye!")
     sys.exit(0)
 
 if __name__ == "__main__":
@@ -18,5 +17,6 @@ if __name__ == "__main__":
 
     try:
         server.play_game()
-    except Exception:
-        pass
+    except Exception as error:
+        warning("Quit the server loop because of: %s", error)
+        sys.exit(1)
