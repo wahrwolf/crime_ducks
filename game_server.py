@@ -15,6 +15,7 @@ class GameServer:
 
         self.commands["restart"] = self.start_game
         self.commands["end"] = self.end_game
+        self.commands["show plot"] = self.show_plot
 
     def end_game(self):
         self.gamestate.solve_crime()
@@ -26,6 +27,9 @@ class GameServer:
         plot_info_prompt = generate_plot_user_info_prompt(self.gamestate)
         plot_info_response = get_response(plot_info_prompt)
         self.player.print_message(plot_info_response)
+
+    def show_plot(self):
+        self.player.print_message(self.gamestate.as_dict()["plot"])
 
     def attach_player(self, player: GameClient):
         self.player = player
@@ -82,7 +86,9 @@ class GameServer:
         self.player.print_message("------------------------", show_underline=False)
 
     def thank_player(self):
-        self.player.print_message((f"You busted the crime after {self.played_turns} Questions. You won!"))
+        self.player.print_message(f"You busted the crime after {self.played_turns} Questions. You won!")
+        self.player.print_message("\n\nThe plot was:")
+        self.show_plot()
 
     def play_game(self):
         self.start_game()

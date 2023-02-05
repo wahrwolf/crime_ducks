@@ -39,7 +39,7 @@ class GameWorldBuilder():
         template = jinja_env.get_template(config["gameworld"]["template_path"])
         prompt = template.render(**opts)
         response = get_response(prompt)
-        return prompt
+        return response
 
     def get_gamestate(self):
         return self._gamestate
