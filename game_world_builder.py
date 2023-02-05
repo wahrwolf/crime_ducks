@@ -20,6 +20,7 @@ class GameWorldBuilder():
         characters_n = random.randint(4, 6)
         characters = characters = random.sample(GameWorldBuilder.get_available_characters(), characters_n)
         victim = random.choice(characters)
+        characters.remove(victim)
         plot = GameWorldBuilder.get_plot({"locations": locations, "characters": characters, "victim": victim})
 
         self._gamestate: GameState = GameState(locations, characters, victim, plot)
