@@ -5,9 +5,19 @@ from user_questioner import get_user_input
 from openai_client import get_response, will_be_flagged_by_moderation
 
 class GameServer:
-    def __init__(self, disable_moderation=False):
+
+    commands = {}
+
+    def __init__(self, disable_moderation=False, enable_commands=True):
         self.played_turns = 0
         self.moderation_disabled = disable_moderation
+        self.commands_enabled = enable_commands
+
+        self.commands["restart"] = self.start_game
+        self.commands["end"] = self.end_game
+
+    def end_game(self):
+        self.gamestate.solve_crime()
 
     def start_game(self):
         self.played_turns = 0
@@ -31,9 +41,26 @@ class GameServer:
         prompt = generate_prompt(self.gamestate, self.last_player_response)
         self.last_ai_response = get_response(prompt)
 
+    def handle_command(self, command:str):
+        if command in self.commands:
+            try:
+                response = self.commands[command]()
+            except Exception as error:
+                self.player.print_message(f"!!!Command failed due to: {error}!!!")
+            else:
+                if response:
+                    self.player.print_message(response)
+        else:
+                self.player.print_message("!!!Command unknown!!!")
+        
+
 
     def play_turn(self):
         player_action = self.player.read_line()
+        while self.commands_enabled and player_action.startswith("!"):
+            self.handle_command(player_action[1::])
+            player_action = self.player.read_line()
+
         while not self.moderation_disabled and will_be_flagged_by_moderation(player_action):
             self.player.print_message("!!! Your response does not comply with the moderation guideline !!!")
             player_action = self.player.read_line()
@@ -48,7 +75,7 @@ class GameServer:
         case_closed_prompt = generate_case_solved_query_prompt(self.gamestate)
         case_closed_response = get_response(case_closed_prompt).strip()
         if case_closed_response.strip().lower() == "yes":
-            self.gamestate.solve_crime()
+            self.end_game()
 
     def greet_player(self):
         self.player.print_message("Chatbot Crime Busters 🦆", show_underline=False)
