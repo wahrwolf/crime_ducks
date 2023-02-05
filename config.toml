@@ -51,6 +51,46 @@ description =  "The suave and debonair spy created by Ian Fleming, who uses his 
 name =  "Gordon Ramsay"
 description =  "A real-life British chef, restaurateur, and television personality, best known for his fiery personality and critical commentary on cooking shows such as Hell's Kitchen and Kitchen Nightmares."
 
+[[gameworld.characters]]
+name = "Harry Potter"
+description = "The protagonist of J.K. Rowling's Harry Potter series, he is a young wizard who discovers his true heritage and battles the evil Lord Voldemort."
+
+[[gameworld.characters]]
+name = "Darth Vader"
+description = "a central character in the Star Wars franchise, he is a former Jedi Knight who turns to the dark side and becomes a Sith Lord."
+
+[[gameworld.characters]]
+name = "Tony Stark (Iron Man)"
+description = "a Marvel Comics character and the alter-ego of genius inventor Tony Stark, he uses his high-tech suit of armor to fight evil and protect the world."
+
+[[gameworld.characters]]
+name = "Katniss Everdeen"
+description = "the protagonist of the Hunger Games trilogy by Suzanne Collins, she is a strong and resourceful young woman who becomes a symbol of hope and rebellion against the oppressive government."
+
+[[gameworld.characters]]
+name = "Elon Musk"
+description = "an entrepreneur, inventor, and CEO, known for his innovative and ambitious work in fields such as electric cars, renewable energy, and space travel."
+
+[[gameworld.characters]]
+name = "Queen Elizabeth II"
+description = "The Queen of the United Kingdom and the Commonwealth Realms, known for her longevity, her dedication to her role and her commitment to public service."
+
+[[gameworld.characters]]
+name = "Homelander"
+description = "A charismatic but dangerous leader of the Seven in 'The Boys', who uses his powers and influence for his own gain and will stop at nothing to maintain control."
+
+[[gameworld.characters]]
+name = "Walter White"
+description = "A high school chemistry teacher turned methamphetamine manufacturer in the crime drama 'Breaking Bad'."
+
+[[gameworld.characters]]
+name = "Buffy Summers"
+description = "A young girl chosen to battle vampires and other supernatural forces in the TV series 'Buffy the Vampire Slayer'."
+
+[[gameworld.characters]]
+name = "Neo"
+description = "A computer programmer who discovers he is "The One," a prophesied hero destined to save humanity in the 'Matrix' trilogy."
+
 [[gameworld.locations]]
 name = "Library"
 description = "A typical library as known like in the 1980s. Three levels, including a basement. Kind of comfy, with a corner with a couch and a few armchairs."
