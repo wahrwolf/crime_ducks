@@ -18,5 +18,14 @@ You can use meta commands to control the game.
 - `!end`: End the current game, and reveal the plot.
 - `!show plot`: Show the current game plot without ending the game
 
+# *BROKEN* Telegram Bot
+- Get you telegram_api token (https://core.telegram.org/bots#how-do-i-create-a-bot)
+- Put you key in `.telegram_api_token`
+- Start the game by `pipenv run python telegram_bot.py`
+
+Currently the bot is broken, because some loop is not coded properly.
+Tbh we hacked the project in a weekend lost any roadmap or further docs.
+If you fix it, please send a PR
+
 # Other Infos
 checkout https://owasp.org/www-project-top-10-for-large-language-model-applications/ for speedruns
